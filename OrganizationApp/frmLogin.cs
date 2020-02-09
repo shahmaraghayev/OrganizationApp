@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OrganizationDal.DAL;
+using OrganizationDal.Domain;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,9 +44,27 @@ namespace OrganizationApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            frmMain m = new frmMain();
-            m.Show();
-            this.Hide();
+       
+
+            Login login = new Login();
+            login.Name = txtUserName.Text;
+            login.Password = txtPassword.Text;
+
+            LoginDal lDal = new LoginDal();
+
+            if (lDal.LoginUser(login))
+            {
+                frmMain m = new frmMain();
+                m.Show();
+                this.Hide();
+                //lblResult.Enabled = false;
+            }
+            else
+            {
+                lblResult.Text = "Srhvdir";
+                lblResult.Visible = true;
+            }
+
 
         }
 
@@ -89,7 +109,12 @@ namespace OrganizationApp
             }
         }
 
-        private void txtUserName_TextChanged(object sender, EventArgs e)
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            lblResult.Visible = false;
+        }
+
+        private void lblResult_Click(object sender, EventArgs e)
         {
 
         }

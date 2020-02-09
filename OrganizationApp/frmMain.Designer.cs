@@ -205,7 +205,6 @@ namespace OrganizationApp
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(780, 419);
             this.pnlMain.TabIndex = 2;
-        
             // 
             // imageList1
             // 

@@ -33,6 +33,7 @@ namespace OrganizationApp
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblResult = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUserName = new System.Windows.Forms.TextBox();
@@ -42,6 +43,7 @@ namespace OrganizationApp
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(84)))), ((int)(((byte)(95)))));
+            this.panel1.Controls.Add(this.lblResult);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.txtPassword);
             this.panel1.Controls.Add(this.txtUserName);
@@ -49,6 +51,17 @@ namespace OrganizationApp
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 233);
             this.panel1.TabIndex = 0;
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.ForeColor = System.Drawing.Color.Red;
+            this.lblResult.Location = new System.Drawing.Point(42, 181);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(35, 13);
+            this.lblResult.TabIndex = 3;
+            this.lblResult.Text = "label1";
+            this.lblResult.Click += new System.EventHandler(this.lblResult_Click);
             // 
             // btnLogin
             // 
@@ -68,7 +81,7 @@ namespace OrganizationApp
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.SystemColors.Info;
-            this.txtPassword.Location = new System.Drawing.Point(34, 123);
+            this.txtPassword.Location = new System.Drawing.Point(34, 121);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(330, 29);
@@ -85,7 +98,6 @@ namespace OrganizationApp
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(330, 29);
             this.txtUserName.TabIndex = 0;
-            this.txtUserName.TextChanged += new System.EventHandler(this.txtUserName_TextChanged);
             // 
             // frmLogin
             // 
@@ -97,6 +109,7 @@ namespace OrganizationApp
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmLogin";
             this.Text = "Daxilolma";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -109,5 +122,6 @@ namespace OrganizationApp
         private Button btnLogin;
         private TextBox txtPassword;
         private TextBox txtUserName;
+        private Label lblResult;
     }
 }

@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
@@ -142,7 +143,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\menu.png" />
@@ -154,6 +157,12 @@
     <Content Include="Resources\organization.ico" />
     <Content Include="Resources\turnOff.png" />
     <None Include="Resources\user_group_users_add_create_new-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrganizationDal\OrganizationDAL.csproj">
+      <Project>{53379436-34b2-43cf-b20d-478a1d0efa74}</Project>
+      <Name>OrganizationDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

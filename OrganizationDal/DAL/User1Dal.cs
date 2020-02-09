@@ -6,7 +6,7 @@ using OrganizationDal.Domain;
 
 namespace OrganizationDal.DAL
 {
-    public class UserDal : BaseDal
+    public class User1Dal : BaseDal
     {
         public int Insert(User user)
         {

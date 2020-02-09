@@ -30,16 +30,16 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.pnlLeft = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtStatus = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgwOrganizations = new System.Windows.Forms.DataGridView();
             this.pnlLeft.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwOrganizations)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -54,9 +54,9 @@
             // 
             // pnlLeft
             // 
-            this.pnlLeft.Controls.Add(this.textBox2);
+            this.pnlLeft.Controls.Add(this.txtStatus);
             this.pnlLeft.Controls.Add(this.label3);
-            this.pnlLeft.Controls.Add(this.textBox1);
+            this.pnlLeft.Controls.Add(this.txtName);
             this.pnlLeft.Controls.Add(this.label2);
             this.pnlLeft.Controls.Add(this.button3);
             this.pnlLeft.Controls.Add(this.button2);
@@ -66,15 +66,16 @@
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(433, 207);
             this.pnlLeft.TabIndex = 2;
+      
             // 
-            // textBox2
+            // txtStatus
             // 
-            this.textBox2.Location = new System.Drawing.Point(95, 65);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(311, 21);
-            this.textBox2.TabIndex = 4;
+            this.txtStatus.Location = new System.Drawing.Point(95, 65);
+            this.txtStatus.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStatus.Multiline = true;
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.Size = new System.Drawing.Size(311, 21);
+            this.txtStatus.TabIndex = 4;
             // 
             // label3
             // 
@@ -86,14 +87,14 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Status";
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(95, 26);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(311, 21);
-            this.textBox1.TabIndex = 4;
+            this.txtName.Location = new System.Drawing.Point(95, 26);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtName.Multiline = true;
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(311, 21);
+            this.txtName.TabIndex = 4;
             // 
             // label2
             // 
@@ -142,19 +143,19 @@
             this.button1.Text = "Əlavə et";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dgwOrganizations
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(455, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(291, 207);
-            this.dataGridView1.TabIndex = 3;
+            this.dgwOrganizations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwOrganizations.Location = new System.Drawing.Point(437, 62);
+            this.dgwOrganizations.Name = "dgwOrganizations";
+            this.dgwOrganizations.Size = new System.Drawing.Size(291, 207);
+            this.dgwOrganizations.TabIndex = 3;
             // 
             // ucOrganization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgwOrganizations);
             this.Controls.Add(this.pnlLeft);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -163,7 +164,7 @@
             this.Size = new System.Drawing.Size(1037, 565);
             this.pnlLeft.ResumeLayout(false);
             this.pnlLeft.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwOrganizations)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -173,13 +174,13 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlLeft;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgwOrganizations;
     }
 }

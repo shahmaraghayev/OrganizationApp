@@ -138,11 +138,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Location = new System.Drawing.Point(12, 11);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 13);
+            this.label3.Size = new System.Drawing.Size(121, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "İstifadəçilərin səlahiyyətləri";
+            this.label3.Text = "İstifadəçilər səlayiyyətləri";
             // 
             // ucUsersRoles
             // 
@@ -152,7 +152,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ucUsersRoles";
-            this.Size = new System.Drawing.Size(737, 516);
+            this.Size = new System.Drawing.Size(933, 557);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
