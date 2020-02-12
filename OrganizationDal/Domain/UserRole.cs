@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace OrganizationDal.Domain
 {
-  public   class Organization
+   public class UserRole
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public int? UserId { get; set; }
 
-        public int? Status { get; set; }
-     
+        public int? RoleId { get; set; }
     }
 }

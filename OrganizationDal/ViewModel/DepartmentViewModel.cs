@@ -20,7 +20,7 @@ namespace OrganizationDal.ViewModel
         public string TopName { get; set; }
 
 
-        [DisplayName("Statuu")]
+        [DisplayName("Status")]
         public int? Status { get; set; }
 
 

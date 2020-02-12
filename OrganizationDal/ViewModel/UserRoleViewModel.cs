@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace OrganizationDal.ViewModel
 {
-  public   class OrganizationViewModel
+  public  class UserRoleViewModel
     {
+
         [Browsable(false)]
         public int Id { get; set; }
 
-        [DisplayName("Ad")]
-        public string Name { get; set; }
+        [DisplayName("İstifadəçi ")]
+        public string UserName { get; set; }
 
-        [DisplayName("Status")]
-        public int? Status { get; set; }
-
+        [DisplayName("Səlahiyyət")]
+        public string RoleName { get; set; }
     }
 }

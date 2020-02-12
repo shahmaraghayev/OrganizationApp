@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrganizationDal.ViewModel
+namespace OrganizationDal.Domain
 {
-  public   class OrganizationViewModel
+  public   class Personnel
     {
-        [Browsable(false)]
+
         public int Id { get; set; }
 
-        [DisplayName("Ad")]
         public string Name { get; set; }
 
-        [DisplayName("Status")]
+        public string Surname { get; set; }
+
+        public string Email { get; set; }
+
         public int? Status { get; set; }
+
+        public int? OrganizationId { get; set; }
+
+        public int? DepartmentId { get; set; }
 
     }
 }

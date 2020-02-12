@@ -40,9 +40,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnChange = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnIsert = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgwDepartments)).BeginInit();
             this.pnLeft.SuspendLayout();
             this.SuspendLayout();
@@ -76,15 +76,14 @@
             this.pnLeft.Controls.Add(this.label3);
             this.pnLeft.Controls.Add(this.txtName);
             this.pnLeft.Controls.Add(this.label2);
-            this.pnLeft.Controls.Add(this.button3);
-            this.pnLeft.Controls.Add(this.button2);
-            this.pnLeft.Controls.Add(this.button1);
+            this.pnLeft.Controls.Add(this.btnChange);
+            this.pnLeft.Controls.Add(this.btnDelete);
+            this.pnLeft.Controls.Add(this.btnIsert);
             this.pnLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnLeft.Location = new System.Drawing.Point(0, 26);
             this.pnLeft.Name = "pnLeft";
             this.pnLeft.Size = new System.Drawing.Size(409, 221);
             this.pnLeft.TabIndex = 2;
-    
             // 
             // label5
             // 
@@ -162,45 +161,45 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Ad";
             // 
-            // button3
+            // btnChange
             // 
-            this.button3.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(143, 167);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(112, 37);
-            this.button3.TabIndex = 5;
-            this.button3.Text = "Dəyiş";
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnChange.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChange.Location = new System.Drawing.Point(196, 167);
+            this.btnChange.Margin = new System.Windows.Forms.Padding(4);
+            this.btnChange.Name = "btnChange";
+            this.btnChange.Size = new System.Drawing.Size(88, 24);
+            this.btnChange.TabIndex = 5;
+            this.btnChange.Text = "Dəyiş";
+            this.btnChange.UseVisualStyleBackColor = false;
+            this.btnChange.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button2
+            // btnDelete
             // 
-            this.button2.BackColor = System.Drawing.Color.PaleVioletRed;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(285, 167);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 37);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Sil";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnDelete.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Location = new System.Drawing.Point(309, 167);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(88, 24);
+            this.btnDelete.TabIndex = 4;
+            this.btnDelete.Text = "Sil";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
+            // btnIsert
             // 
-            this.button1.BackColor = System.Drawing.Color.LimeGreen;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(17, 167);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 37);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Əlavə et";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnIsert.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnIsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIsert.ForeColor = System.Drawing.Color.Black;
+            this.btnIsert.Location = new System.Drawing.Point(87, 167);
+            this.btnIsert.Margin = new System.Windows.Forms.Padding(4);
+            this.btnIsert.Name = "btnIsert";
+            this.btnIsert.Size = new System.Drawing.Size(88, 24);
+            this.btnIsert.TabIndex = 3;
+            this.btnIsert.Text = "Əlavə et";
+            this.btnIsert.UseVisualStyleBackColor = false;
+            this.btnIsert.Click += new System.EventHandler(this.button1_Click);
             // 
             // ucDepartment
             // 
@@ -226,9 +225,9 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnLeft;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnChange;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnIsert;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbOrganization;

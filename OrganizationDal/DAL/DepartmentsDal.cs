@@ -113,65 +113,6 @@ namespace OrganizationDal.DAL
             }
 
         }
-        public IEnumerable<IdNameViewModel> GetDepartmentsByIdName()
-        {
-            var parameters = new List<SqlParameter>();
-            var dataReader = sqlHelper.GetDataReader("SELECT Id,Name From Departments WHERE Status = 1",
-                CommandType.Text, null, out connection);
-
-            try
-            {
-                var departments = new List<IdNameViewModel>();
-                while (dataReader.Read())
-                {
-                    var department = new IdNameViewModel();
-                    department.Id = Convert.ToInt32(dataReader["Id"].ToString());
-                    department.Name = dataReader["Name"].ToString();
-                    departments.Add(department);
-                }
-
-                return departments;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                dataReader.Close();
-                CloseConnection();
-            }
-
-        }
-        public IEnumerable<IdNameViewModel> GeOrganizationsByIdName()
-        {
-            var parameters = new List<SqlParameter>();
-            var dataReader = sqlHelper.GetDataReader("SELECT Id,Name From Organizations WHERE Status = 1",
-                CommandType.Text, null, out connection);
-
-            try
-            {
-                var departments = new List<IdNameViewModel>();
-                while (dataReader.Read())
-                {
-                    var department = new IdNameViewModel();
-                    department.Id = Convert.ToInt32(dataReader["Id"].ToString());
-                    department.Name = dataReader["Name"].ToString();
-                    departments.Add(department);
-                }
-
-                return departments;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                dataReader.Close();
-                CloseConnection();
-            }
-
-        }
+      
     }
 }

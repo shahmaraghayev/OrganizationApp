@@ -15,17 +15,19 @@ namespace OrganizationApp.Controls
 {
     public partial class ucDepartment : UserControl
     {
+        CommonDal common;
         DepartmentsDal departmentCrud;
         Department _department;
         public ucDepartment()
         {
             InitializeComponent();
             departmentCrud = new DepartmentsDal();
+            common = new CommonDal();
 
-            cbHeadDepartment.DataSource = departmentCrud.GetDepartmentsByIdName();
+            cbHeadDepartment.DataSource = common.GetDepartmentsByIdName();
             cbHeadDepartment.SelectedIndex = -1;
 
-            cbOrganization.DataSource = departmentCrud.GeOrganizationsByIdName();
+            cbOrganization.DataSource = common.GetOrganizationsByIdName();
             cbOrganization.SelectedIndex = -1;
         }
 
@@ -56,7 +58,7 @@ namespace OrganizationApp.Controls
 
             txtName.Text = _department.Name;
             txtStatus.Text = Convert.ToString(_department.Status);
-            cbHeadDepartment.SelectedValue = _department.TopId;
+            cbHeadDepartment.SelectedValue =_department.TopId;
             cbOrganization.SelectedValue = _department.OrganizationId;
 
         }

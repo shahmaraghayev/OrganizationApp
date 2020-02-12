@@ -44,8 +44,13 @@ namespace OrganizationApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-       
 
+            frmMain m = new frmMain();
+            m.Show();
+            this.Hide();
+
+
+            /*
             Login login = new Login();
             login.Name = txtUserName.Text;
             login.Password = txtPassword.Text;
@@ -57,14 +62,14 @@ namespace OrganizationApp
                 frmMain m = new frmMain();
                 m.Show();
                 this.Hide();
-                //lblResult.Enabled = false;
+               
             }
             else
             {
                 lblResult.Text = "Srhvdir";
                 lblResult.Visible = true;
             }
-
+            */
 
         }
 

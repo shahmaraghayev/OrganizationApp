@@ -86,6 +86,7 @@ namespace OrganizationApp
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(330, 29);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.Text = "123a";
             // 
             // txtUserName
             // 
@@ -98,6 +99,7 @@ namespace OrganizationApp
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(330, 29);
             this.txtUserName.TabIndex = 0;
+            this.txtUserName.Text = "amil";
             // 
             // frmLogin
             // 
