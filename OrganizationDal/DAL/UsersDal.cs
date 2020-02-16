@@ -66,7 +66,7 @@ namespace OrganizationDal.DAL
             catch (Exception exp)
             {
                 logger.Error(exp, "User Delete");
-                throw;
+                throw;//
             }
             
         }
