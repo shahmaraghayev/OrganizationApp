@@ -45,17 +45,19 @@
             this.btnChange = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPersonnels)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgwPersonnels
             // 
             this.dgwPersonnels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwPersonnels.Location = new System.Drawing.Point(371, 30);
+            this.dgwPersonnels.Location = new System.Drawing.Point(367, 56);
             this.dgwPersonnels.Name = "dgwPersonnels";
-            this.dgwPersonnels.Size = new System.Drawing.Size(647, 242);
+            this.dgwPersonnels.Size = new System.Drawing.Size(558, 242);
             this.dgwPersonnels.TabIndex = 0;
             this.dgwPersonnels.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_RowHeaderMouseClick);
             // 
@@ -76,9 +78,9 @@
             this.panel1.Controls.Add(this.btnChange);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnInsert);
-            this.panel1.Location = new System.Drawing.Point(13, 30);
+            this.panel1.Location = new System.Drawing.Point(6, 55);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(352, 251);
+            this.panel1.Size = new System.Drawing.Size(355, 242);
             this.panel1.TabIndex = 1;
             // 
             // cbOrganization
@@ -226,30 +228,30 @@
             this.btnInsert.UseVisualStyleBackColor = false;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
-            // label1
+            // groupBox1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 1);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Əməkdaşlar";
+            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Controls.Add(this.dgwPersonnels);
+            this.groupBox1.Location = new System.Drawing.Point(3, 17);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(940, 330);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Kadrlar";
             // 
             // ucPersonnel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgwPersonnels);
+            this.Controls.Add(this.groupBox1);
             this.Name = "ucPersonnel";
-            this.Size = new System.Drawing.Size(1097, 537);
+            this.Size = new System.Drawing.Size(1097, 555);
             this.Load += new System.EventHandler(this.ucPersonnel_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwPersonnels)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -262,7 +264,6 @@
         private System.Windows.Forms.Button btnChange;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnInsert;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtSurname;
@@ -273,5 +274,7 @@
         private System.Windows.Forms.ComboBox cbDepartment;
         private System.Windows.Forms.ComboBox cbOrganization;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

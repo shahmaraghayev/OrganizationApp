@@ -38,19 +38,21 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.dgwOrganizations = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pnlLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwOrganizations)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 28);
+            this.label1.Location = new System.Drawing.Point(28, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 16);
+            this.label1.Size = new System.Drawing.Size(0, 16);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Təşkilat";
             // 
             // pnlLeft
             // 
@@ -61,7 +63,7 @@
             this.pnlLeft.Controls.Add(this.btnChange);
             this.pnlLeft.Controls.Add(this.btnDelete);
             this.pnlLeft.Controls.Add(this.btnInsert);
-            this.pnlLeft.Location = new System.Drawing.Point(15, 59);
+            this.pnlLeft.Location = new System.Drawing.Point(31, 62);
             this.pnlLeft.Margin = new System.Windows.Forms.Padding(4);
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(433, 146);
@@ -69,7 +71,7 @@
             // 
             // txtStatus
             // 
-            this.txtStatus.Location = new System.Drawing.Point(95, 65);
+            this.txtStatus.Location = new System.Drawing.Point(100, 42);
             this.txtStatus.Margin = new System.Windows.Forms.Padding(4);
             this.txtStatus.Multiline = true;
             this.txtStatus.Name = "txtStatus";
@@ -79,7 +81,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 69);
+            this.label3.Location = new System.Drawing.Point(47, 47);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 16);
@@ -88,7 +90,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(95, 26);
+            this.txtName.Location = new System.Drawing.Point(102, 4);
             this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
@@ -98,7 +100,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 26);
+            this.label2.Location = new System.Drawing.Point(47, 4);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(25, 16);
@@ -109,7 +111,7 @@
             // 
             this.btnChange.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChange.Location = new System.Drawing.Point(213, 94);
+            this.btnChange.Location = new System.Drawing.Point(220, 72);
             this.btnChange.Margin = new System.Windows.Forms.Padding(4);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(88, 24);
@@ -122,7 +124,7 @@
             // 
             this.btnDelete.BackColor = System.Drawing.Color.PaleVioletRed;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(318, 94);
+            this.btnDelete.Location = new System.Drawing.Point(325, 72);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(88, 24);
@@ -136,7 +138,7 @@
             this.btnInsert.BackColor = System.Drawing.Color.LimeGreen;
             this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInsert.ForeColor = System.Drawing.Color.Black;
-            this.btnInsert.Location = new System.Drawing.Point(95, 94);
+            this.btnInsert.Location = new System.Drawing.Point(102, 72);
             this.btnInsert.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(88, 24);
@@ -148,19 +150,29 @@
             // dgwOrganizations
             // 
             this.dgwOrganizations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwOrganizations.Location = new System.Drawing.Point(455, 59);
+            this.dgwOrganizations.Location = new System.Drawing.Point(471, 62);
             this.dgwOrganizations.Name = "dgwOrganizations";
-            this.dgwOrganizations.Size = new System.Drawing.Size(561, 146);
+            this.dgwOrganizations.Size = new System.Drawing.Size(149, 146);
             this.dgwOrganizations.TabIndex = 3;
             this.dgwOrganizations.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgwOrganizations_RowHeaderMouseClick);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.pnlLeft);
+            this.groupBox1.Controls.Add(this.dgwOrganizations);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(113, 35);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(653, 251);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Təşkilat";
             // 
             // ucOrganization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dgwOrganizations);
-            this.Controls.Add(this.pnlLeft);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ucOrganization";
@@ -169,8 +181,9 @@
             this.pnlLeft.ResumeLayout(false);
             this.pnlLeft.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwOrganizations)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -186,5 +199,7 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.DataGridView dgwOrganizations;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

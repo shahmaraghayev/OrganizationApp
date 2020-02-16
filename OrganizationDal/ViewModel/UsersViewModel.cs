@@ -21,7 +21,7 @@ namespace OrganizationDal.ViewModel
         [DisplayName("Əməkdaşın adı")]
         public string PersonnelName { get; set; }
 
-        [DisplayName("Status")]
+        [Browsable(false)]
         public int? Status { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace OrganizationDal.DAL
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw ;
             }
             finally
             {
@@ -62,7 +62,7 @@ namespace OrganizationDal.DAL
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw ;
             }
             finally
             {
@@ -93,7 +93,7 @@ namespace OrganizationDal.DAL
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw ;
             }
             finally
             {
@@ -123,7 +123,7 @@ namespace OrganizationDal.DAL
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
             finally
             {
@@ -153,7 +153,7 @@ namespace OrganizationDal.DAL
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw ;
             }
             finally
             {
@@ -184,7 +184,7 @@ namespace OrganizationDal.DAL
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
             finally
             {

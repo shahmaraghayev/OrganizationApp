@@ -43,24 +43,26 @@
             this.btnChange = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnIsert = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwDepartments)).BeginInit();
             this.pnLeft.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgwDepartments
             // 
             this.dgwDepartments.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgwDepartments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwDepartments.Location = new System.Drawing.Point(415, 24);
+            this.dgwDepartments.Location = new System.Drawing.Point(421, 33);
             this.dgwDepartments.Name = "dgwDepartments";
-            this.dgwDepartments.Size = new System.Drawing.Size(578, 206);
+            this.dgwDepartments.Size = new System.Drawing.Size(368, 221);
             this.dgwDepartments.TabIndex = 0;
             this.dgwDepartments.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgwDepartments_RowHeaderMouseClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 0);
+            this.label1.Location = new System.Drawing.Point(41, -26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 1;
@@ -80,7 +82,7 @@
             this.pnLeft.Controls.Add(this.btnDelete);
             this.pnLeft.Controls.Add(this.btnIsert);
             this.pnLeft.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnLeft.Location = new System.Drawing.Point(0, 26);
+            this.pnLeft.Location = new System.Drawing.Point(6, 33);
             this.pnLeft.Name = "pnLeft";
             this.pnLeft.Size = new System.Drawing.Size(409, 221);
             this.pnLeft.TabIndex = 2;
@@ -165,6 +167,7 @@
             // 
             this.btnChange.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChange.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnChange.Location = new System.Drawing.Point(196, 167);
             this.btnChange.Margin = new System.Windows.Forms.Padding(4);
             this.btnChange.Name = "btnChange";
@@ -178,6 +181,7 @@
             // 
             this.btnDelete.BackColor = System.Drawing.Color.PaleVioletRed;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(309, 167);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
@@ -191,6 +195,7 @@
             // 
             this.btnIsert.BackColor = System.Drawing.Color.LimeGreen;
             this.btnIsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnIsert.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIsert.ForeColor = System.Drawing.Color.Black;
             this.btnIsert.Location = new System.Drawing.Point(87, 167);
             this.btnIsert.Margin = new System.Windows.Forms.Padding(4);
@@ -201,21 +206,32 @@
             this.btnIsert.UseVisualStyleBackColor = false;
             this.btnIsert.Click += new System.EventHandler(this.button1_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.pnLeft);
+            this.groupBox1.Controls.Add(this.dgwDepartments);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(35, 18);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(797, 273);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Təşkilat struktoru";
+            // 
             // ucDepartment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pnLeft);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dgwDepartments);
+            this.Controls.Add(this.groupBox1);
             this.Name = "ucDepartment";
             this.Size = new System.Drawing.Size(1005, 408);
             this.Load += new System.EventHandler(this.ucDepartment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwDepartments)).EndInit();
             this.pnLeft.ResumeLayout(false);
             this.pnLeft.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -236,5 +252,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

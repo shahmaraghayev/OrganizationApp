@@ -27,7 +27,7 @@ namespace OrganizationDal.ViewModel
         [DisplayName("Təçkilatın adı")]
         public string OrganizationName { get; set; }
 
-        [DisplayName("Status")]
+        [Browsable(false)]
         public int? Status { get; set; }
 
 

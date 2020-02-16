@@ -50,26 +50,26 @@ namespace OrganizationApp
             this.Hide();
 
 
-            /*
-            Login login = new Login();
-            login.Name = txtUserName.Text;
-            login.Password = txtPassword.Text;
 
-            LoginDal lDal = new LoginDal();
+            //Login login = new Login();
+            //login.Name = txtUserName.Text;
+            //login.Password = txtPassword.Text;
 
-            if (lDal.LoginUser(login))
-            {
-                frmMain m = new frmMain();
-                m.Show();
-                this.Hide();
-               
-            }
-            else
-            {
-                lblResult.Text = "Srhvdir";
-                lblResult.Visible = true;
-            }
-            */
+            //LoginDal lDal = new LoginDal();
+
+            //if (lDal.LoginUser(login))
+            //{
+            //    frmMain m = new frmMain();
+            //    m.Show();
+            //    this.Hide();
+
+            //}
+            //else
+            //{
+            //    lblResult.Text = "Srhvdir";
+            //    lblResult.Visible = true;
+            //}
+
 
         }
 
@@ -117,11 +117,6 @@ namespace OrganizationApp
         private void frmLogin_Load(object sender, EventArgs e)
         {
             lblResult.Visible = false;
-        }
-
-        private void lblResult_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

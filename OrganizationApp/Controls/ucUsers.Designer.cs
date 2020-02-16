@@ -42,16 +42,19 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsers)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgwUsers
             // 
             this.dgwUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwUsers.Location = new System.Drawing.Point(438, 33);
+            this.dgwUsers.Location = new System.Drawing.Point(453, 37);
             this.dgwUsers.Name = "dgwUsers";
-            this.dgwUsers.Size = new System.Drawing.Size(317, 198);
+            this.dgwUsers.Size = new System.Drawing.Size(365, 198);
             this.dgwUsers.TabIndex = 0;
             this.dgwUsers.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgwUsers_RowHeaderMouseClick);
             // 
@@ -68,15 +71,15 @@
             this.panel1.Controls.Add(this.btnChange);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnInsert);
-            this.panel1.Location = new System.Drawing.Point(-10, 33);
+            this.panel1.Location = new System.Drawing.Point(15, 37);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(442, 198);
+            this.panel1.Size = new System.Drawing.Size(432, 198);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // txtStatus
             // 
-            this.txtStatus.Location = new System.Drawing.Point(103, 82);
+            this.txtStatus.Location = new System.Drawing.Point(112, 61);
             this.txtStatus.Margin = new System.Windows.Forms.Padding(4);
             this.txtStatus.Multiline = true;
             this.txtStatus.Name = "txtStatus";
@@ -86,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(58, 90);
+            this.label3.Location = new System.Drawing.Point(67, 69);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 13);
@@ -97,7 +100,7 @@
             // 
             this.cbPersonnel.DisplayMember = "Name";
             this.cbPersonnel.FormattingEnabled = true;
-            this.cbPersonnel.Location = new System.Drawing.Point(103, 110);
+            this.cbPersonnel.Location = new System.Drawing.Point(112, 89);
             this.cbPersonnel.Name = "cbPersonnel";
             this.cbPersonnel.Size = new System.Drawing.Size(311, 21);
             this.cbPersonnel.TabIndex = 25;
@@ -106,7 +109,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 113);
+            this.label4.Location = new System.Drawing.Point(43, 92);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 13);
             this.label4.TabIndex = 24;
@@ -115,7 +118,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 58);
+            this.label1.Location = new System.Drawing.Point(73, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 23;
@@ -123,14 +126,14 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(103, 55);
+            this.txtPassword.Location = new System.Drawing.Point(112, 34);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(311, 20);
             this.txtPassword.TabIndex = 21;
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(103, 27);
+            this.txtName.Location = new System.Drawing.Point(112, 6);
             this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Multiline = true;
             this.txtName.Name = "txtName";
@@ -140,7 +143,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(70, 30);
+            this.label2.Location = new System.Drawing.Point(79, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(20, 13);
@@ -151,7 +154,7 @@
             // 
             this.btnChange.BackColor = System.Drawing.Color.LightSteelBlue;
             this.btnChange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChange.Location = new System.Drawing.Point(215, 153);
+            this.btnChange.Location = new System.Drawing.Point(224, 132);
             this.btnChange.Margin = new System.Windows.Forms.Padding(4);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(88, 24);
@@ -164,7 +167,7 @@
             // 
             this.btnDelete.BackColor = System.Drawing.Color.PaleVioletRed;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(326, 153);
+            this.btnDelete.Location = new System.Drawing.Point(335, 132);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(88, 24);
@@ -178,7 +181,7 @@
             this.btnInsert.BackColor = System.Drawing.Color.LimeGreen;
             this.btnInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInsert.ForeColor = System.Drawing.Color.Black;
-            this.btnInsert.Location = new System.Drawing.Point(103, 153);
+            this.btnInsert.Location = new System.Drawing.Point(112, 132);
             this.btnInsert.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(88, 24);
@@ -192,23 +195,33 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(-3, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
+            this.label5.Size = new System.Drawing.Size(0, 13);
             this.label5.TabIndex = 2;
-            this.label5.Text = "İstifadəçilər";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Controls.Add(this.dgwUsers);
+            this.groupBox1.Location = new System.Drawing.Point(17, 29);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(843, 254);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "İstifadəçilər";
             // 
             // ucUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgwUsers);
             this.Name = "ucUsers";
             this.Size = new System.Drawing.Size(906, 558);
             this.Load += new System.EventHandler(this.ucUsers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsers)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -230,5 +243,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

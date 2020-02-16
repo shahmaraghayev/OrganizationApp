@@ -1,4 +1,5 @@
-﻿using OrganizationDal.Domain;
+﻿using NLog;
+using OrganizationDal.Domain;
 using OrganizationDal.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,11 @@ namespace OrganizationDal.DAL
 {
    public class UsersDal:BaseDal
     {
+        Logger logger;
+        public UsersDal()
+        {
+            logger = LogManager.GetCurrentClassLogger();
+        }
         public int Insert(User users)
         {
             var parameters = new List<SqlParameter>();
@@ -27,24 +33,42 @@ namespace OrganizationDal.DAL
 
         public void Update(User users)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", users.Id, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@Name", 50, users.Name, DbType.String));
-            parameters.Add(sqlHelper.CreateParameter("@Password", 50, users.Password, DbType.String));
-            parameters.Add(sqlHelper.CreateParameter("@Status", users.Status, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@PersonnelId", users.PersonnelId, DbType.Int32));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", users.Id, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Name", 50, users.Name, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Password", 50, users.Password, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Status", users.Status, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@PersonnelId", users.PersonnelId, DbType.Int32));
 
-            sqlHelper.Update("UPDATE Users SET Name =@Name,PersonnelId=@PersonnelId,Status=@Status,Password=@Password WHERE Id = @Id",
-                CommandType.Text, parameters.ToArray());
+                sqlHelper.Update("UPDATE Users SET Name =@Name,PersonnelId=@PersonnelId,Status=@Status,Password=@Password WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp,"User update");
+                throw;
+            }
+           
         }
 
         public void Delete(int id)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
 
-            sqlHelper.Delete("DELETE FROM Users WHERE Id = @Id",
-                CommandType.Text, parameters.ToArray());
+                sqlHelper.Delete("DELETE FROM Users WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "User Delete");
+                throw;
+            }
+            
         }
 
         public User GetById(int id)

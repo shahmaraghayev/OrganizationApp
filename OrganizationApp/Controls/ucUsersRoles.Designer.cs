@@ -38,16 +38,18 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnİnsert = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsersRoles)).BeginInit();
             this.panel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgwUsersRoles
             // 
             this.dgwUsersRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwUsersRoles.Location = new System.Drawing.Point(431, 27);
+            this.dgwUsersRoles.Location = new System.Drawing.Point(446, 43);
             this.dgwUsersRoles.Name = "dgwUsersRoles";
-            this.dgwUsersRoles.Size = new System.Drawing.Size(306, 165);
+            this.dgwUsersRoles.Size = new System.Drawing.Size(250, 165);
             this.dgwUsersRoles.TabIndex = 0;
             this.dgwUsersRoles.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgwUserRole_RowHeaderMouseClick);
             // 
@@ -60,7 +62,7 @@
             this.panel1.Controls.Add(this.btnChange);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnİnsert);
-            this.panel1.Location = new System.Drawing.Point(3, 27);
+            this.panel1.Location = new System.Drawing.Point(15, 43);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(422, 165);
             this.panel1.TabIndex = 1;
@@ -146,27 +148,37 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 11);
+            this.label3.Location = new System.Drawing.Point(27, 27);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 13);
+            this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "İstifadəçilər səlayiyyətləri";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.panel1);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.dgwUsersRoles);
+            this.groupBox1.Location = new System.Drawing.Point(83, 34);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(715, 252);
+            this.groupBox1.TabIndex = 3;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "İstifadəçilər səlayiyyətlər";
             // 
             // ucUsersRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgwUsersRoles);
+            this.Controls.Add(this.groupBox1);
             this.Name = "ucUsersRoles";
             this.Size = new System.Drawing.Size(933, 557);
             this.Load += new System.EventHandler(this.ucUsersRoles_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwUsersRoles)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -182,5 +194,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnİnsert;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
