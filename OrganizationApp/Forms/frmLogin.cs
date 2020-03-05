@@ -1,4 +1,6 @@
-﻿using OrganizationDal.DAL;
+﻿using OrganizationApp.Sessions;
+using OrganizationApp.Utils;
+using OrganizationDal.DAL;
 using OrganizationDal.Domain;
 using System;
 using System.Collections.Generic;
@@ -15,8 +17,10 @@ namespace OrganizationApp
     //myForm.BackColor =  ColorTranslator.FromHtml("#3A444C");
     public partial class frmLogin : Form
     {
+        LoginDal loginDal;
         public frmLogin()
         {
+            loginDal = new LoginDal();
             InitializeComponent();
             #region panel at screan center
             this.panel1.Location = new Point(
@@ -43,34 +47,21 @@ namespace OrganizationApp
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
-        {
-
-            frmMain m = new frmMain();
-            m.Show();
-            this.Hide();
-
-
-
-            //Login login = new Login();
-            //login.Name = txtUserName.Text;
-            //login.Password = txtPassword.Text;
-
-            //LoginDal lDal = new LoginDal();
-
-            //if (lDal.LoginUser(login))
-            //{
-            //    frmMain m = new frmMain();
-            //    m.Show();
-            //    this.Hide();
-
-            //}
-            //else
-            //{
-            //    lblResult.Text = "Srhvdir";
-            //    lblResult.Visible = true;
-            //}
-
-
+        {  
+           var user = loginDal.GetUserByUserName(txtUserName.Text);
+            if (user != null && user.Password == Helper.GenerateSHA256Hash(txtPassword.Text, user.Salt))
+            {
+                LoginSession.LoginUser = user;
+                frmMain m = new frmMain();
+                m.Show();
+                this.Hide();
+            }
+           else
+            {
+                lblResult.Text = "Srhvdir";
+                lblResult.Visible = true;
+            }
+       
         }
 
 
@@ -118,5 +109,7 @@ namespace OrganizationApp
         {
             lblResult.Visible = false;
         }
+
+     
     }
 }

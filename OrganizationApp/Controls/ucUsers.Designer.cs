@@ -75,7 +75,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(432, 198);
             this.panel1.TabIndex = 1;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // txtStatus
             // 
@@ -128,6 +127,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(112, 34);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(311, 20);
             this.txtPassword.TabIndex = 21;
             // 

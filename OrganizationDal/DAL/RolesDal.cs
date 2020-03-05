@@ -1,4 +1,5 @@
-﻿using OrganizationDal.Domain;
+﻿using NLog;
+using OrganizationDal.Domain;
 using OrganizationDal.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,38 +13,68 @@ namespace OrganizationDal.DAL
 {
  public   class RolesDal:BaseDal
     {
-
+        Logger logger;
+        public RolesDal()
+        {
+            logger = LogManager.GetCurrentClassLogger();
+        }
         public int Insert(Role roles)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Name", 50,roles.Name, DbType.String));
-           
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Name", 50, roles.Name, DbType.String));
 
-            int lastId = 0;
-            sqlHelper.Insert("INSERT INTO Roles(Name) VALUES (@Name)",
-               CommandType.Text, parameters.ToArray(), out lastId);
-            return lastId;
+
+                int lastId = 0;
+                sqlHelper.Insert("INSERT INTO Roles(Name) VALUES (@Name)",
+                   CommandType.Text, parameters.ToArray(), out lastId);
+                return lastId;
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "insert Role");
+                throw;
+            }
+          
         }
 
         public void Update(Role roles)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", roles.Id, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@Name", 50, roles.Name, DbType.String));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", roles.Id, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Name", 50, roles.Name, DbType.String));
 
 
-            sqlHelper.Update("UPDATE Roles SET Name =@Name WHERE Id = @Id",
-                CommandType.Text, parameters.ToArray());
+                sqlHelper.Update("UPDATE Roles SET Name =@Name WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Update Role");
+                throw;
+            }
+            
         }
 
         public void Delete(int id)
         {
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
 
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
-
-            sqlHelper.Delete("DELETE FROM Roles WHERE Id = @Id",
-                CommandType.Text, parameters.ToArray());
+                sqlHelper.Delete("DELETE FROM Roles WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp,"Delete role");
+                throw;
+            }
+            
         }
 
         public Role GetById(int id)
@@ -64,9 +95,11 @@ namespace OrganizationDal.DAL
 
                 return roles;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "Role GetById");
+
+                throw ;
             }
             finally
             {
@@ -93,9 +126,10 @@ namespace OrganizationDal.DAL
 
                 return roles;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "RolesViewModel");
+                throw ;
             }
             finally
             {

@@ -20,17 +20,48 @@ namespace OrganizationDal.DAL
         }
         public int Insert(User users)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Name", 50, users.Name, DbType.String));
-            parameters.Add(sqlHelper.CreateParameter("@Password", 50, users.Password, DbType.String));
-            parameters.Add(sqlHelper.CreateParameter("@Status", users.Status, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@PersonnelId", users.PersonnelId, DbType.Int32)); int lastId = 0;
-            sqlHelper.Insert("INSERT INTO Users(Name,Password,Status,PersonnelId) VALUES (@Name,@Password,@Status,@PersonnelId)",
-                CommandType.Text, parameters.ToArray(), out lastId);
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Name", 50, users.Name, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Password", 250, users.Password, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Salt", 50, users.Salt, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Status", users.Status, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@PersonnelId", users.PersonnelId, DbType.Int32)); int lastId = 0;
+                sqlHelper.Insert("INSERT INTO Users(Name,Password,Status,PersonnelId,Salt) VALUES (@Name,@Password,@Status,@PersonnelId,@Salt)",
+                    CommandType.Text, parameters.ToArray(), out lastId);
 
-            return lastId;
+                return lastId;
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "User update");
+                throw;
+            }
+        
         }
+        public void UpdatePassword(User users)
+        {
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", users.Id, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Name", 50, users.Name, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Password", 250, users.Password, DbType.String));
+                 parameters.Add(sqlHelper.CreateParameter("@Salt", 20, users.Salt, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Status", users.Status, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@PersonnelId", users.PersonnelId, DbType.Int32));
 
+                sqlHelper.Update("UPDATE Users SET Name =@Name,PersonnelId=@PersonnelId,Status=@Status,Password=@Password,Salt=@Salt WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "User update");
+                throw;
+            }
+
+        }
         public void Update(User users)
         {
             try
@@ -38,11 +69,12 @@ namespace OrganizationDal.DAL
                 var parameters = new List<SqlParameter>();
                 parameters.Add(sqlHelper.CreateParameter("@Id", users.Id, DbType.Int32));
                 parameters.Add(sqlHelper.CreateParameter("@Name", 50, users.Name, DbType.String));
-                parameters.Add(sqlHelper.CreateParameter("@Password", 50, users.Password, DbType.String));
+                //parameters.Add(sqlHelper.CreateParameter("@Password", 250, users.Password, DbType.String));
+               // parameters.Add(sqlHelper.CreateParameter("@Salt", 20, users.Salt, DbType.String));
                 parameters.Add(sqlHelper.CreateParameter("@Status", users.Status, DbType.Int32));
                 parameters.Add(sqlHelper.CreateParameter("@PersonnelId", users.PersonnelId, DbType.Int32));
 
-                sqlHelper.Update("UPDATE Users SET Name =@Name,PersonnelId=@PersonnelId,Status=@Status,Password=@Password WHERE Id = @Id",
+                sqlHelper.Update("UPDATE Users SET Name =@Name,PersonnelId=@PersonnelId,Status=@Status WHERE Id = @Id",
                     CommandType.Text, parameters.ToArray());
             }
             catch (Exception exp)
@@ -94,9 +126,10 @@ namespace OrganizationDal.DAL
 
                 return users;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "User GetById");
+                throw ;
             }
             finally
             {
@@ -126,9 +159,10 @@ namespace OrganizationDal.DAL
 
                 return users;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "UsersViewModel");
+                throw ;
             }
             finally
             {

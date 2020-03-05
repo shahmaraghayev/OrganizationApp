@@ -3,11 +3,17 @@ using System.Data;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using OrganizationDal.Domain;
+using NLog;
 
 namespace OrganizationDal.DAL
 {
     public class User1Dal : BaseDal
     {
+        Logger logger;
+        public User1Dal()
+        {
+            logger = LogManager.GetCurrentClassLogger();
+        }
         public int Insert(User1 user)
         {
             var parameters = new List<SqlParameter>();
@@ -59,9 +65,10 @@ namespace OrganizationDal.DAL
 
                 return user;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "User1 GetById");
+                throw ;
             }
             finally
             {
@@ -89,9 +96,10 @@ namespace OrganizationDal.DAL
 
                 return users;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "User1 GetAll");
+                throw ;
             }
             finally
             {

@@ -14,7 +14,8 @@ namespace OrganizationDal.Domain
 
         public string Password { get; set; }
 
-        
+        public string Salt { get; set; }
+
         public int? Status { get; set; }
 
         public int? PersonnelId { get; set; }

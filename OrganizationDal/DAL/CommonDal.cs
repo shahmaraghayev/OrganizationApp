@@ -30,8 +30,9 @@ namespace OrganizationDal.DAL
 
                 return departments;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
+                
                 throw ;
             }
             finally

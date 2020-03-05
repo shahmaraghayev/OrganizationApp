@@ -1,4 +1,5 @@
-﻿using OrganizationDal.Domain;
+﻿using NLog;
+using OrganizationDal.Domain;
 using OrganizationDal.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,38 +13,71 @@ namespace OrganizationDal.DAL
 {
   public  class UsersRolesDal:BaseDal
     {
+        Logger logger;
+        public UsersRolesDal()
+        {
+            logger = LogManager.GetCurrentClassLogger();
+        }
+
         public int Insert(UserRole userRole)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@UserId", userRole.UserId, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@RoleId", userRole.RoleId, DbType.Int32));
-            int lastId = 0;
-            sqlHelper.Insert("INSERT INTO UsersRoles(UserId,RoleId) VALUES (@UserId,@RoleId)",
-                CommandType.Text, parameters.ToArray(), out lastId);
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@UserId", userRole.UserId, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@RoleId", userRole.RoleId, DbType.Int32));
+                int lastId = 0;
+                sqlHelper.Insert("INSERT INTO UsersRoles(UserId,RoleId) VALUES (@UserId,@RoleId)",
+                    CommandType.Text, parameters.ToArray(), out lastId);
 
-            return lastId;
+                return lastId;
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp,"Insert UserRole");
+                throw;
+            }
+          
         }
 
         public void Update(UserRole userRole)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", userRole.Id, DbType.Int32));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", userRole.Id, DbType.Int32));
 
-            parameters.Add(sqlHelper.CreateParameter("@UserId", userRole.UserId, DbType.Int32));
-         
-            parameters.Add(sqlHelper.CreateParameter("@RoleId", userRole.RoleId, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@UserId", userRole.UserId, DbType.Int32));
 
-            sqlHelper.Update("UPDATE UsersRoles SET UserId=@UserId,RoleId=@RoleId WHERE Id = @Id",
-                CommandType.Text, parameters.ToArray());
+                parameters.Add(sqlHelper.CreateParameter("@RoleId", userRole.RoleId, DbType.Int32));
+
+                sqlHelper.Update("UPDATE UsersRoles SET UserId=@UserId,RoleId=@RoleId WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Update UserRole");
+                throw;
+            }
+            
         }
 
         public void Delete(int id)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
 
-            sqlHelper.Delete("DELETE FROM UsersRoles WHERE Id = @Id",
-                CommandType.Text, parameters.ToArray());
+                sqlHelper.Delete("DELETE FROM UsersRoles WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Delete UserRole");
+                throw;
+            }
+           
         }
 
         public UserRole GetById(int id)
@@ -67,9 +101,10 @@ namespace OrganizationDal.DAL
 
                 return userRole;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "Update GetById");
+                throw ;
             }
             finally
             {
@@ -100,9 +135,10 @@ namespace OrganizationDal.DAL
 
                 return userRole;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "UserRole GetAll");
+                throw ;
             }
             finally
             {

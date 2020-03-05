@@ -1,4 +1,5 @@
-﻿using OrganizationDal.Domain;
+﻿using NLog;
+using OrganizationDal.Domain;
 using OrganizationDal.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,43 +13,76 @@ namespace OrganizationDal.DAL
 {
     public class DepartmentsDal:BaseDal
     {
+        Logger logger;
+        public DepartmentsDal()
+        {
+            logger = LogManager.GetCurrentClassLogger();
+        }
         public int Insert(Department department)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Name", 50, department.Name, DbType.String));
-            parameters.Add(sqlHelper.CreateParameter("@TopId", department.TopId, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@Status", department.Status, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@OrganizationId", department.OrganizationId, DbType.Int32));            int lastId = 0;
-            sqlHelper.Insert("INSERT INTO Departments(Name,OrganizationId,Status,TopId) VALUES (@Name,@OrganizationId,@Status,@TopId)",
-                CommandType.Text, parameters.ToArray(), out lastId);
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Name", 50, department.Name, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@TopId", department.TopId, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Status", department.Status, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@OrganizationId", department.OrganizationId, DbType.Int32)); int lastId = 0;
+                sqlHelper.Insert("INSERT INTO Departments(Name,OrganizationId,Status,TopId) VALUES (@Name,@OrganizationId,@Status,@TopId)",
+                    CommandType.Text, parameters.ToArray(), out lastId);
 
-            return lastId;
+                return lastId;
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Insert Department");
+                throw;
+            }
+           
         }
 
         public void Update(Department department)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", department.Id, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@Name", 50, department.Name, DbType.String));
-            parameters.Add(sqlHelper.CreateParameter("@TopId", department.TopId, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@Status", department.Status, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@OrganizationId", department.OrganizationId, DbType.Int32));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", department.Id, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Name", 50, department.Name, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@TopId", department.TopId, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Status", department.Status, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@OrganizationId", department.OrganizationId, DbType.Int32));
 
-            sqlHelper.Update("UPDATE Departments SET Name =@Name,OrganizationId=@OrganizationId,Status=@Status,TopId=@TopId WHERE Id = @Id", 
-                CommandType.Text, parameters.ToArray());
+                sqlHelper.Update("UPDATE Departments SET Name =@Name,OrganizationId=@OrganizationId,Status=@Status,TopId=@TopId WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Update Department");
+                throw;
+            }
+           
         }
 
         public void Delete(int id)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
 
-            sqlHelper.Delete("DELETE FROM Departments WHERE Id = @Id", 
-                CommandType.Text, parameters.ToArray());
+                sqlHelper.Delete("DELETE FROM Departments WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Update Department");
+                throw;
+            }
+            
         }
 
         public Department GetById(int id)
         {
+
             var parameters = new List<SqlParameter>();
             parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
 
@@ -69,9 +103,10 @@ namespace OrganizationDal.DAL
 
                 return department;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "Department GetById");
+                throw ;
             }
             finally
             {
@@ -102,9 +137,10 @@ namespace OrganizationDal.DAL
 
                 return departments;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "DepartmentViewModel");
+                throw ;
             }
             finally
             {

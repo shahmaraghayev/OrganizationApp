@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using OrganizationDal.ViewModel;
 using OrganizationDal.DAL;
 using OrganizationDal.Domain;
+using OrganizationApp.Utils;
 
 namespace OrganizationApp.Controls
 {
@@ -29,6 +30,7 @@ namespace OrganizationApp.Controls
 
         private void dgwUsers_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+  
             int rowIndex = e.RowIndex;
             DataGridViewRow row = dgwUsers.Rows[rowIndex];
             var users = (UsersViewModel)row.DataBoundItem;
@@ -36,7 +38,7 @@ namespace OrganizationApp.Controls
             _users = usersCrud.GetById(users.Id);
 
             txtName.Text = _users.Name;
-            txtPassword.Text = _users.Password;
+        //    txtPassword.Text = _users.Password;
             txtStatus.Text = Convert.ToString(_users.Status);
             cbPersonnel.SelectedValue = _users.PersonnelId;
         }
@@ -45,7 +47,8 @@ namespace OrganizationApp.Controls
         {
            User user = new User();
             user.Name = txtName.Text;
-            user.Password= txtPassword.Text;
+            user.Salt = Helper.CreateSalt(10);
+            user.Password= Helper.GenerateSHA256Hash(txtPassword.Text, user.Salt);
             user.PersonnelId = Convert.ToInt32(cbPersonnel.SelectedValue);
             user.Status = Convert.ToInt32(txtStatus.Text);
             usersCrud.Insert(user);
@@ -59,7 +62,8 @@ namespace OrganizationApp.Controls
             {
                 _users.Name = txtName.Text;
                 _users.Status = Convert.ToInt32(txtStatus.Text);
-                _users.Password = txtPassword.Text;
+               //  _users.Salt = Helper.CreateSalt(10);
+               // _users.Password = Helper.GenerateSHA256Hash(txtPassword.Text, _users.Salt);
                 _users.PersonnelId = Convert.ToInt32(cbPersonnel.SelectedValue);
                  usersCrud.Update(_users);
                  ucUsers_Load(null, null);
@@ -79,9 +83,6 @@ namespace OrganizationApp.Controls
             dgwUsers.DataSource = usersCrud.GetAll();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
     }
 }

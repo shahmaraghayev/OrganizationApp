@@ -1,4 +1,5 @@
 ﻿using OrganizationApp.Controls;
+using OrganizationApp.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -80,6 +81,12 @@ namespace OrganizationApp
             var uc = new ucUsersRoles();
             uc.Dock = DockStyle.Fill;
             pnlMain.Controls.Add(uc);
+        }
+
+        private void btnChangedPassword_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frm = new frmChangePassword();
+            frm.ShowDialog();
         }
     }
 }

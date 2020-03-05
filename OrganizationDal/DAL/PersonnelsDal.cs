@@ -1,4 +1,5 @@
-﻿using OrganizationDal.Domain;
+﻿using NLog;
+using OrganizationDal.Domain;
 using OrganizationDal.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -10,53 +11,86 @@ using System.Threading.Tasks;
 
 namespace OrganizationDal.DAL
 {
+   
   public  class PersonnelsDal:BaseDal
     {
+        Logger logger;
+        public PersonnelsDal()
+        {
+            logger = LogManager.GetCurrentClassLogger();
+        }
         public int Insert(Personnel personnel)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Name", 50, personnel.Name, DbType.String));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Name", 50, personnel.Name, DbType.String));
 
-            parameters.Add(sqlHelper.CreateParameter("@Surname", 50, personnel.Surname, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Surname", 50, personnel.Surname, DbType.String));
 
-            parameters.Add(sqlHelper.CreateParameter("@Status", personnel.Status, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Status", personnel.Status, DbType.Int32));
 
-            parameters.Add(sqlHelper.CreateParameter("@OrganizationId", personnel.OrganizationId, DbType.Int32)); int lastId = 0;
+                parameters.Add(sqlHelper.CreateParameter("@OrganizationId", personnel.OrganizationId, DbType.Int32)); int lastId = 0;
 
-            parameters.Add(sqlHelper.CreateParameter("@DepartmentId", personnel.DepartmentId, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@DepartmentId", personnel.DepartmentId, DbType.Int32));
 
-            parameters.Add(sqlHelper.CreateParameter("@Email", 100, personnel.Email, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Email", 100, personnel.Email, DbType.String));
 
-            sqlHelper.Insert("INSERT INTO Personnels(Name,OrganizationId,Status,DepartmentId,Surname,Email) VALUES (@Name,@OrganizationId,@Status,@DepartmentId,@Surname,@Email)",
-                CommandType.Text, parameters.ToArray(), out lastId);
+                sqlHelper.Insert("INSERT INTO Personnels(Name,OrganizationId,Status,DepartmentId,Surname,Email) VALUES (@Name,@OrganizationId,@Status,@DepartmentId,@Surname,@Email)",
+                    CommandType.Text, parameters.ToArray(), out lastId);
 
-            return lastId;
+                return lastId;
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Insert Organization");
+                throw;
+            }
+           
         }
 
         public void Update(Personnel personnel)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", personnel.Id, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@Name", 50, personnel.Name, DbType.String));
-            parameters.Add(sqlHelper.CreateParameter("@Surname", 50, personnel.Surname, DbType.String));
-            parameters.Add(sqlHelper.CreateParameter("@DepartmentId", personnel.DepartmentId, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@OrganizationId", personnel.OrganizationId, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@Status", personnel.Status, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@Email", 100, personnel.Email, DbType.String));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", personnel.Id, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Name", 50, personnel.Name, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Surname", 50, personnel.Surname, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@DepartmentId", personnel.DepartmentId, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@OrganizationId", personnel.OrganizationId, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Status", personnel.Status, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Email", 100, personnel.Email, DbType.String));
+
+
+
+                sqlHelper.Update("UPDATE Personnels SET Name =@Name, Surname=@Surname,OrganizationId=@OrganizationId,DepartmentId=@DepartmentId,Status=@Status,Email=@Email WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Update Organization");
+                throw;
+            }
            
-
-
-            sqlHelper.Update("UPDATE Personnels SET Name =@Name, Surname=@Surname,OrganizationId=@OrganizationId,DepartmentId=@DepartmentIdStatus=@Status,Email=@Email WHERE Id = @Id",
-                CommandType.Text, parameters.ToArray());
         }
 
         public void Delete(int id)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
 
-            sqlHelper.Delete("DELETE FROM Personnels WHERE Id = @Id",
-                CommandType.Text, parameters.ToArray());
+                sqlHelper.Delete("DELETE FROM Personnels WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Delete Organization");
+                throw;
+            }
+            
         }
 
         public Personnel GetById(int id)
@@ -83,9 +117,10 @@ namespace OrganizationDal.DAL
 
                 return personnel;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "Personnel GetById");
+                throw ;
             }
             finally
             {
@@ -117,9 +152,10 @@ namespace OrganizationDal.DAL
 
                 return personnels;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, "PersonnelViewModel");
+                throw ;
             }
             finally
             {

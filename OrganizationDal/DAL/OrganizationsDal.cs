@@ -1,4 +1,5 @@
-﻿using OrganizationDal.Domain;
+﻿using NLog;
+using OrganizationDal.Domain;
 using OrganizationDal.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -12,36 +13,68 @@ namespace OrganizationDal.DAL
 {
   public   class OrganizationsDal:BaseDal
     {
+        Logger logger;
+        public OrganizationsDal()
+        {
+            logger = LogManager.GetCurrentClassLogger();
+        }
         public int Insert(Organization organization)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Name", 50, organization.Name, DbType.String));
-            parameters.Add(sqlHelper.CreateParameter("@Status", organization.Status, DbType.Int32));
-            int lastId = 0;
-            sqlHelper.Insert("INSERT INTO Organizations(Name,Status) VALUES (@Name,@Status)",
-                CommandType.Text, parameters.ToArray(), out lastId);
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Name", 50, organization.Name, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Status", organization.Status, DbType.Int32));
+                int lastId = 0;
+                sqlHelper.Insert("INSERT INTO Organizations(Name,Status) VALUES (@Name,@Status)",
+                    CommandType.Text, parameters.ToArray(), out lastId);
 
-            return lastId;
+                return lastId;
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Insert Organization");
+                throw;
+            }
+           
         }
 
         public void Update(Organization organization)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", organization.Id, DbType.Int32));
-            parameters.Add(sqlHelper.CreateParameter("@Name", 50, organization.Name, DbType.String));
-            parameters.Add(sqlHelper.CreateParameter("@Status", organization.Status, DbType.Int32));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", organization.Id, DbType.Int32));
+                parameters.Add(sqlHelper.CreateParameter("@Name", 50, organization.Name, DbType.String));
+                parameters.Add(sqlHelper.CreateParameter("@Status", organization.Status, DbType.Int32));
 
-            sqlHelper.Update("UPDATE Organizations SET Name =@Name,Status=@Status WHERE Id = @Id",
-                CommandType.Text, parameters.ToArray());
+                sqlHelper.Update("UPDATE Organizations SET Name =@Name,Status=@Status WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Update Organization");
+                throw;
+            }
+         
         }
 
         public void Delete(int id)
         {
-            var parameters = new List<SqlParameter>();
-            parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
+            try
+            {
+                var parameters = new List<SqlParameter>();
+                parameters.Add(sqlHelper.CreateParameter("@Id", id, DbType.Int32));
 
-            sqlHelper.Delete("DELETE FROM Organizations WHERE Id = @Id",
-                CommandType.Text, parameters.ToArray());
+                sqlHelper.Delete("DELETE FROM Organizations WHERE Id = @Id",
+                    CommandType.Text, parameters.ToArray());
+            }
+            catch (Exception exp)
+            {
+                logger.Error(exp, "Delete Organization");
+                throw;
+            }
+           
         }
 
         public Organization GetById(int id)
@@ -65,9 +98,10 @@ namespace OrganizationDal.DAL
 
                 return organization;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+                logger.Error(exp, " Organization GetById ");
+                throw ;
             }
             finally
             {
@@ -95,9 +129,11 @@ namespace OrganizationDal.DAL
 
                 return organizations;
             }
-            catch (Exception ex)
+            catch (Exception exp)
             {
-                throw ex;
+
+                logger.Error(exp, " OrganizationViewModel ");
+                throw ;
             }
             finally
             {

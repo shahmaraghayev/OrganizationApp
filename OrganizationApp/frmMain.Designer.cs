@@ -46,6 +46,7 @@ namespace OrganizationApp
             this.pnlMain = new System.Windows.Forms.Panel();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.btnChangedPassword = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             this.pnlLeft.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -54,6 +55,7 @@ namespace OrganizationApp
             // pnlTop
             // 
             this.pnlTop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(78)))));
+            this.pnlTop.Controls.Add(this.btnChangedPassword);
             this.pnlTop.Controls.Add(this.btnToggle);
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(208, 0);
@@ -220,6 +222,17 @@ namespace OrganizationApp
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // btnChangedPassword
+            // 
+            this.btnChangedPassword.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnChangedPassword.Location = new System.Drawing.Point(705, 0);
+            this.btnChangedPassword.Name = "btnChangedPassword";
+            this.btnChangedPassword.Size = new System.Drawing.Size(75, 35);
+            this.btnChangedPassword.TabIndex = 1;
+            this.btnChangedPassword.Text = "Şifrəni dəyiş";
+            this.btnChangedPassword.UseVisualStyleBackColor = true;
+            this.btnChangedPassword.Click += new System.EventHandler(this.btnChangedPassword_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,6 +271,7 @@ namespace OrganizationApp
         private System.Windows.Forms.Button btnRoles;
         private System.Windows.Forms.Button btnPersonnel;
         private System.Windows.Forms.Button btnUsers;
+        private System.Windows.Forms.Button btnChangedPassword;
     }
 }
 
